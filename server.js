@@ -39,7 +39,7 @@ app.post('/',function(req,res){
     // 비콘 체크 리스트에 현 비콘 추가
     beaconCheckList[msg["Minor"]] = Math.floor(+ new Date()/1000);
 
-    msg['Error'] = "양호";
+    msg['Error'] = "正常";
     io.emit('beaconInfo', msg)
     return res.json({success:true});
 });
@@ -53,7 +53,7 @@ setInterval(() => {
                 var errorBeacon = {
                     "Minor"    : index,
                     "LastReceivedTime" : element,
-                    "Error" : "이상"
+                    "Error" : "異常"
                 }
                 console.log(errorBeacon)
                 io.emit('beaconError', errorBeacon)
